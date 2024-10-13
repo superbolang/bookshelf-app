@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Afacad Flux", sans-serif;
+}
+
+header {
+  background-color: cornflowerblue;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+section {
+  border: 3px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  width: 50%;
+  margin: auto auto 10px auto;
+}
+
+h2,
+label {
+  color: cornflowerblue;
+}
+
+.bookAdd {
+  display: flex;
+  flex-direction: column;
+}
+
+#bookFormSubmit {
+  width: 100%;
+  background-color: cornflowerblue;
+  color: whitesmoke;
+  border: none;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+span {
+  font-weight: bold;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+input {
+  padding: 5px;
+}
+
+#searchSubmit {
+  width: 20%;
+  background-color: cornflowerblue;
+  color: whitesmoke;
+  border: none;
+  padding: 7px;
+  border-radius: 3px;
+}
+
+#searchBookTitle {
+  width: 65%;
+}
+
+.status {
+  border: 2px solid black;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 5px;
+}
+
+.button {
+  padding: 5px;
+  border: none;
+  border-radius: 3px;
+  color: whitesmoke;
+  cursor: pointer;
+}
+
+.finishButton {
+  background-color: green;
+}
+
+.deleteButton {
+  background-color: red;
+}
+
+.editButton {
+  background-color: yellow;
+  color: black;
+}
