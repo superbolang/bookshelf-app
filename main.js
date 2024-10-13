@@ -89,12 +89,11 @@ document.addEventListener(RENDER_BOOKS, function () {
 function makeBook(book) {
   const { id, author, title, year, isComplete } = book;
   const containerBook = document.createElement("div");
-  containerBook.setAttribute("data-bookid", `"${book.id}`);
-  containerBook.setAttribute("data-testid", "boookItem");
+  containerBook.setAttribute("data-bookid", `${book.id}`);
+  containerBook.setAttribute("data-testid", "bookItem");
   containerBook.setAttribute("class", "status");
   if (isComplete) {
     containerBook.innerHTML = `
-      
         <h3 data-testid="bookItemTitle">${book.title}</h3>
         <p data-testid="bookItemAuthor">Penulis: ${book.author}</p>
         <p data-testid="bookItemYear">Tahun: ${book.year}</p>
@@ -103,11 +102,9 @@ function makeBook(book) {
           <button class="button deleteButton" data-testid="bookItemDeleteButton" onclick="deleteBook(${book.id})">Hapus Buku</button>
           <button class="button editButton" data-testid="bookItemEditButton" onclick="editBook(${book.id})">Edit Buku</button>
         </div>
-  
     `;
   } else {
     containerBook.innerHTML = `
-    
       <h3 data-testid="bookItemTitle">${book.title}</h3>
       <p data-testid="bookItemAuthor">Penulis: ${book.author}</p>
       <p data-testid="bookItemYear">Tahun: ${book.year}</p>
@@ -116,7 +113,6 @@ function makeBook(book) {
         <button class="button deleteButton" data-testid="bookItemDeleteButton" onclick="deleteBook(${book.id})">Hapus Buku</button>
         <button class="button editButton" data-testid="bookItemEditButton" onclick="editBook(${book.id})">Edit Buku</button>
       </div>
-    
   `;
   }
   return containerBook;
@@ -134,6 +130,14 @@ function findBook(id) {
     if (book.id === id) return book;
   }
   return null;
+}
+
+function findTarget(status, id) {
+  let item;
+  [...status].forEach((element) => {
+    if (parseInt(element.getAttribute("data-bookid")) === id) item = element;
+  });
+  return item;
 }
 
 function moveBook(id) {
@@ -156,7 +160,9 @@ function editBook(id) {
   const targetBook = findIndex(id);
   if (targetBook === -1) return;
 
-  const target = document.querySelector(`[data-bookid="${id}"]`);
+  const status = document.querySelectorAll(".status");
+  const target = findTarget(status, id);
+
   const container = document.createElement("div");
   container.innerHTML = `&nbsp;
     <form id="bookForm" data-testid="bookForm">
