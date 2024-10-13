@@ -37,7 +37,7 @@ function addBook() {
   const id = Number(new Date());
   const author = document.getElementById("bookFormAuthor").value;
   const title = document.getElementById("bookFormTitle").value;
-  const year = document.getElementById("bookFormYear").value;
+  const year = parseInt(document.getElementById("bookFormYear").value);
   const check = document.getElementById("bookFormIsComplete").checked;
   check ? (isComplete = true) : (isComplete = false);
   const book = { id, author, title, year, isComplete };
@@ -187,7 +187,7 @@ function editBook(id) {
     event.preventDefault();
     books[targetBook].title = document.getElementById("editTitle").value;
     books[targetBook].author = document.getElementById("editAuthor").value;
-    books[targetBook].year = document.getElementById("editYear").value;
+    books[targetBook].year = parseInt(document.getElementById("editYear").value);
     document.dispatchEvent(new Event(RENDER_BOOKS));
     saveLocalStorage();
   });
