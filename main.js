@@ -89,9 +89,12 @@ document.addEventListener(RENDER_BOOKS, function () {
 function makeBook(book) {
   const { id, author, title, year, isComplete } = book;
   const containerBook = document.createElement("div");
+  containerBook.setAttribute("data-bookid", `"${book.id}`);
+  containerBook.setAttribute("data-testid", "boookItem");
+  containerBook.setAttribute("class", "status");
   if (isComplete) {
     containerBook.innerHTML = `
-      <div data-bookid="${book.id}" data-testid="bookItem" class="status">
+      
         <h3 data-testid="bookItemTitle">${book.title}</h3>
         <p data-testid="bookItemAuthor">Penulis: ${book.author}</p>
         <p data-testid="bookItemYear">Tahun: ${book.year}</p>
@@ -100,11 +103,11 @@ function makeBook(book) {
           <button class="button deleteButton" data-testid="bookItemDeleteButton" onclick="deleteBook(${book.id})">Hapus Buku</button>
           <button class="button editButton" data-testid="bookItemEditButton" onclick="editBook(${book.id})">Edit Buku</button>
         </div>
-      </div>
+  
     `;
   } else {
     containerBook.innerHTML = `
-    <div data-bookid="${book.id}" data-testid="bookItem" class="status">
+    
       <h3 data-testid="bookItemTitle">${book.title}</h3>
       <p data-testid="bookItemAuthor">Penulis: ${book.author}</p>
       <p data-testid="bookItemYear">Tahun: ${book.year}</p>
@@ -113,7 +116,7 @@ function makeBook(book) {
         <button class="button deleteButton" data-testid="bookItemDeleteButton" onclick="deleteBook(${book.id})">Hapus Buku</button>
         <button class="button editButton" data-testid="bookItemEditButton" onclick="editBook(${book.id})">Edit Buku</button>
       </div>
-    </div>
+    
   `;
   }
   return containerBook;
